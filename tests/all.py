@@ -4898,5 +4898,13 @@ with profile.test_list.group_manager(
     g(['arb_compute_variable_group_size-local-size'], 'local-size')
     g(['arb_compute_variable_group_size-minmax'], 'minmax')
 
+with profile.test_list.group_manager(
+        PiglitGLTest,
+        grouptools.join('spec', 'intel_conservative_rasterization')) as g:
+    g(['intel_conservative_rasterization-depthcoverage'])
+    g(['intel_conservative_rasterization-innercoverage'])
+    g(['intel_conservative_rasterization-invalid'])
+    g(['intel_conservative_rasterization-tri'])
+
 if platform.system() is 'Windows':
     profile.filters.append(lambda p, _: not p.startswith('glx'))
